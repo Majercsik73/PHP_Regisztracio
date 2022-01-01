@@ -1,20 +1,19 @@
 <?php
     include("dbconnect.php");
-    /*
+    session_start();
+
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
     
-        if(isset($_POST["nev"]) && !empty($_POST["nev"]) &&
+        if(isset($_POST["email"]) && !empty($_POST["email"]) &&
             isset($_POST["pw1"]) && !empty($_POST["pw1"]))
             {
-                
-                $nev = $_POST["nev"];
+                $email = $_POST["email"];
                 $pw1 = $_POST["pw1"];
-
                 $hashpw = md5($pw1);
                 
                 //Felhasználónév lekérés ellenőrzéshez
-                $sql2 = "SELECT * FROM felhasznalo WHERE nev = '$nev'";
+                $sql2 = "SELECT * FROM felhasznalo WHERE email = '$email'";
                 $result2 = $db->query($sql2);
                 
                 //belépési jelszó lekérés ellenőrzéshez
@@ -23,23 +22,33 @@
 
                 //Itt megyünk végig a tényleges ellenőrzéseken
                 if($result2->num_rows < 1){
-                    echo "<script>alert('A megadott felhasználónévvel nincs regisztráció!')</script>";
-                    header("belepes.php");
+                    echo "<script>alert('A megadott email címmel nincs regisztráció!')</script>";
+                    echo "<script>location.href = 'belepes.php'</script>";;
                 }
 
                 elseif($result3->num_rows < 1){
                     echo "<script>alert('A megadott jelszó nem megfelelő!')</script>";
-                    header("belepes.php");
+                    echo "<script>location.href = 'belepes.php'</script>";
                 }
 
                 else{   //Ha minden rendben, beléptetjük
-                    echo "<script>alert('Köszöntjük weboldalunkon!')</script>";
-                    echo "<script>location.href = 'foglalas.php'</script>";
-                    //header("foglalas.php");  //header("index.php");  // Ne ragadjonak be az adatok!!!!
-                }  
+                    echo "<script>alert('Köszöntjük weboldalunkon!')</script><br />";
+                    //Azonosítószám és név kinyerése db-ből
+                    $sql1 = "SELECT azon, nev, pw FROM felhasznalo WHERE email = '$email' AND pw = '$hashpw'";
+                    $result1 = $db->query($sql1);
+
+                    if ($result1->num_rows > 0){
+                        $row = $result1->fetch_assoc();
+                        $azon = $row['azon'];
+                        $nev = $row['nev'];
+                        $_SESSION['Azonosito'] = $azon;
+                        $_SESSION['Felhasznalonev'] = $nev;
+                        //$_SESSION['Jelszo'] = $hashpw;
+                    }
+                }
+                echo "<script>location.href = 'foglalas.php'</script>";
             }
-    }
-    */
+    }        
     //Lekérdezés
 
     $sql1 = "SELECT * FROM felhasznalo ORDER BY azon DESC LIMIT 4 ";
@@ -57,7 +66,7 @@
     <body>  
         
         <br />
-        <form method = "POST" action="foglalas.php">
+        <form method = "POST" action="">
             <table class = "ujfelhasznalo">
                 <tr><td><strong>Belépés:</strong></td></tr>
                 <tr>
