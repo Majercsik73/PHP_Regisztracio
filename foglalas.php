@@ -83,7 +83,8 @@
                     (null, '$azon2', '$szemelydb', '$datum', '$idopont', now(), 0); ";       
                     $request4 = $db->query($sql4);
                     echo "<script>alert('Köszönjük a foglalást!')</script>";
-                    echo "<script>location.href='index.php'</script>";  //header("Refresh:0");  //  // Ne ragadjonak be az adatok!!!!
+                    header("Refresh:0");  // Ne ragadjonak be az adatok!!!!
+                    echo "<script>location.href='index.php'</script>";
                 }
             }
     }   
@@ -150,9 +151,21 @@
                     <td><input type="date" name="datum"></td>
                 </tr>
                 <tr>
+                    <td><label>Időpont:</label></td>
+                    <td><select name="idopont">
+                            <option>16:00:00</option>
+                            <option>17:00:00</option>
+                            <option>18:00:00</option>
+                            <option>19:00:00</option>
+                            <option>20:00:00</option>
+                            <option>21:00:00</option>
+                        </select>
+                    </td>
+                </tr>
+                <!--<tr>
                     <td><label>Időpont: </label></td>
                     <td><input type="time" name="idopont"></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td><button type="submit">Foglalás!</button></td>
                 </tr>
