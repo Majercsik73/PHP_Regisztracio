@@ -83,7 +83,7 @@
                     (null, '$azon2', '$szemelydb', '$datum', '$idopont', now(), 0); ";       
                     $request4 = $db->query($sql4);
                     echo "<script>alert('Köszönjük a foglalást!')</script>";
-                    echo "<script>location.href='index.php'";  //header("Refresh:0");  //  // Ne ragadjonak be az adatok!!!!
+                    echo "<script>location.href='index.php'</script>";  //header("Refresh:0");  //  // Ne ragadjonak be az adatok!!!!
                 }
             }
     }   
