@@ -2,69 +2,22 @@
     include("dbconnect.php");
 
     session_start();
-    $nev = '';
-    if($_SERVER["REQUEST_METHOD"] == "POST")
-    {
     
-        if(isset($_POST["email"]) && !empty($_POST["email"]) &&
-            isset($_POST["pw1"]) && !empty($_POST["pw1"]))
-            {
-                $email = $_POST["email"];
-                $pw1 = $_POST["pw1"];
-                $hashpw = md5($pw1);
-                
-                //Felhasználónév lekérés ellenőrzéshez
-                $sql2 = "SELECT * FROM felhasznalo WHERE email = '$email'";
-                $result2 = $db->query($sql2);
-                
-                //belépési jelszó lekérés ellenőrzéshez
-                $sql3 = "SELECT * FROM felhasznalo WHERE pw = '$hashpw'";
-                $result3 = $db->query($sql3);
+    //echo "Az alábbi adatokkal léptél be: <br />";
+    //echo "<pre>";
+    //print_r($_SESSION);
+    //echo "</pre>";
 
-                //Itt megyünk végig a tényleges ellenőrzéseken
-                if($result2->num_rows < 1){
-                    echo "<script>alert('A megadott email címmel nincs regisztráció!')</script>";
-                    echo "<script>location.href = 'belepes.php'</script>";;
-                }
-
-                elseif($result3->num_rows < 1){
-                    echo "<script>alert('A megadott jelszó nem megfelelő!')</script>";
-                    echo "<script>location.href = 'belepes.php'</script>";
-                }
-
-                else{   //Ha minden rendben, beléptetjük
-                    echo "<script>alert('Köszöntjük weboldalunkon!')</script><br />";
-                    //Azonosítószám és név kinyerése db-ből
-                    $sql1 = "SELECT azon, nev, pw FROM felhasznalo WHERE email = '$email' AND pw = '$hashpw'";
-                    $result1 = $db->query($sql1);
-
-                    if ($result1->num_rows > 0){
-                        $row = $result1->fetch_assoc();
-                        $azon = $row['azon'];
-                        $nev = $row['nev'];
-                        $_SESSION['Azonosito'] = $azon;
-                        $_SESSION['Felhasznalonev'] = $nev;
-                        //$_SESSION['Jelszo'] = $hashpw;
-                    }
-                    //session_destroy();
-
-                    echo "Az alábbi adatokkal léptél be: <br />";
-                    echo "Session = <br />";
-                    echo "<pre>";   //<br />Azonosító: ".$azon.
-                    print_r($_SESSION); //"<br />Felhasználónév: ".$nev.
-                    echo "</pre>";   //"<br />Jelszó: ".$hashpw."<br />";
-                }
-            }
-    }        
-
+    
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {      
         if(isset($_POST["szemelydb"]) && !empty($_POST["szemelydb"]) &&
         isset($_POST["datum"]) && !empty($_POST["datum"]) &&
         isset($_POST["idopont"]) && !empty($_POST["idopont"]))
             {
-                //$nev2 = $_POST["nev2"];
-                $azon2 = $_POST["azon2"];
+                $azon = $_SESSION['Azonosito'];
+                $nev = $_SESSION['Felhasznalonev'];
+                $azon2 = $_POST['azon2'];
                 $szemelydb = $_POST["szemelydb"];
                 $datum = $_POST["datum"];
                 $idopont = $_POST["idopont"];
@@ -85,7 +38,7 @@
                 //dátum és időpont tényleges ellenőrzése
                 if($result5 -> num_rows > 6){
                     echo "<script>alert('Az Ön által megadott időpontra már nem lehetséges foglalás!')</script>";
-                    header("foglalas.php");
+                    echo "<script>location.href='foglalas.php'</script>";
                 }
 
                 //Ha minden rendben, az új foglalást felvesszük a db-be
@@ -99,7 +52,6 @@
                 }
             }
     }   
-    session_destroy();
     //Lekérdezés
 
     $sql = "SELECT * FROM foglalas ORDER BY fazon DESC limit 6";
@@ -117,7 +69,7 @@
         <title>Burgeretterem-Foglalás</title>
     </head>
     <body>
-        <h1> Üdvözöljük <?php echo $nev ?> !</h1>
+        <h1> Üdvözöljük <?php echo " ".$_SESSION['Felhasznalonev']."  ".$_SESSION['Azonosito'] ?> !</h1>
         <h2> Foglalásához kérjük adja meg a személyek számát, a dátumot és az időpontot!</h2>
         <br />
         <table>
@@ -151,7 +103,7 @@
             <table class="ujfelhasznalo">
                 <tr class="hidden">
                     <!--<td><input type="text" name="nev2" value="<?php echo $nev ?>"></td>-->
-                    <td><input type="text" name="azon2" value="<?php echo $azon ?>" ></td>
+                    <td><input type="text" name="azon2" value="<?php echo $_SESSION['Azonosito'] ?>" ></td>
                 </tr>
                 <tr>
                     <td><label>Személyek száma: </label></td>
