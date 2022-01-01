@@ -63,27 +63,27 @@
         isset($_POST["datum"]) && !empty($_POST["datum"]) &&
         isset($_POST["idopont"]) && !empty($_POST["idopont"]))
             {
-                $nev2 = $_POST["nev2"];
+                //$nev2 = $_POST["nev2"];
                 $azon2 = $_POST["azon2"];
                 $szemelydb = $_POST["szemelydb"];
                 $datum = $_POST["datum"];
                 $idopont = $_POST["idopont"];
                 
                 //Személy darabszám ellenőrzés
-                $min = 1;
+                /*$min = 1;
                 $max = 8;
                 if (filter_var($szemelydb, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false)
                     {
                         echo "<script>alert('A megadható személyek száma 1 és 8 közötti lehet!')</script>";
                         header("foglalas.php");
-                    }
+                    }*/
 
                 //dátum és időpont lekérése ellenőrzéshez
-                $sql5 = "SELECT COUNT(idopont) FROM foglalas WHERE datum = '$datum' AND idopont = '$idopont'";
+                $sql5 = "SELECT idopont FROM foglalas WHERE datum = '$datum' AND idopont = '$idopont'";
                 $result5 = $db->query($sql5);
 
                 //dátum és időpont tényleges ellenőrzése
-                if($result5 > 6){
+                if($result5 -> num_rows > 6){
                     echo "<script>alert('Az Ön által megadott időpontra már nem lehetséges foglalás!')</script>";
                     header("foglalas.php");
                 }
@@ -118,7 +118,7 @@
     </head>
     <body>
         <h1> Üdvözöljük <?php echo $nev ?> !</h1>
-        <h2> Kérjük adja meg a személyek számát és foglaljon időpontot!</h2>
+        <h2> Foglalásához kérjük adja meg a személyek számát, a dátumot és az időpontot!</h2>
         <br />
         <table>
             <thead style="font-weight:bold">
@@ -155,7 +155,18 @@
                 </tr>
                 <tr>
                     <td><label>Személyek száma: </label></td>
-                    <td><input type="number" name="szemelydb"></td>
+                    <td><select name="szemelydb">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                        </select>
+                        <label> fő </label>
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Dátum: </label></td>

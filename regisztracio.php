@@ -75,6 +75,7 @@
                     echo "<script>alert('Köszönjük a regisztrációt!')</script>";
 
                     header("Refresh:0");  //header("index.php");  // Ne ragadjonak be az adatok!!!!
+                    echo "<script>location.href='index.php'</script>";
                 }  
             }
     }
