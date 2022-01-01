@@ -77,6 +77,17 @@
                         echo "<script>alert('A megadható személyek száma 1 és 8 közötti lehet!')</script>";
                         header("foglalas.php");
                     }
+
+                //dátum és időpont lekérése ellenőrzéshez
+                $sql5 = "SELECT COUNT(idopont) FROM foglalas WHERE datum = '$datum' AND idopont = '$idopont'";
+                $result5 = $db->query($sql5);
+
+                //dátum és időpont tényleges ellenőrzése
+                if($result5 > 6){
+                    echo "<script>alert('Az Ön által megadott időpontra már nem lehetséges foglalás!')</script>";
+                    header("foglalas.php");
+                }
+
                 //Ha minden rendben, az új foglalást felvesszük a db-be
                 else{   
                     $sql4 = "INSERT INTO foglalas (fazon, azon, szemelydb, datum, idopont, ido, megjelent) VALUES
@@ -139,7 +150,7 @@
         <form method="POST" action= "">
             <table class="ujfelhasznalo">
                 <tr class="hidden">
-                    <td><input type="text" name="nev2" value="<?php echo $nev ?>"></td>
+                    <!--<td><input type="text" name="nev2" value="<?php echo $nev ?>"></td>-->
                     <td><input type="text" name="azon2" value="<?php echo $azon ?>" ></td>
                 </tr>
                 <tr>
