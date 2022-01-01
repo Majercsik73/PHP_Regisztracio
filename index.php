@@ -57,5 +57,9 @@
         <form action="belepes.php">
             <button type="submit">Belépés</button>
         </form>
+        <br />
+        <form action="foglalasoklekerdezese.php">
+            <button type="submit">Foglalások</button>
+        </form>
     </body>
 </html>
