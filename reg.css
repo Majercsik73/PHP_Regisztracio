@@ -1,0 +1,33 @@
+td{
+    width: 250px;
+    height: 25px;
+    text-align: center;
+}
+
+.gomb{
+    width: 80px;
+    height: 20px;
+    
+}
+
+#cim{
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ujfelhasznalo{
+    margin-left:auto;
+    margin-right:auto;
+    position: relative;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.reg
+{
+    width: 240px;
+}
