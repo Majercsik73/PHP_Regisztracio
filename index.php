@@ -1,16 +1,7 @@
 <?php
     
     include("dbconnect.php");
-    
-    /*
-    $conn = new mysqli('localhost','root','','burgeretterem');
-    if($conn -> connect_errno){
-        echo $conn -> connect_error;
-        die();
-    }
-    */
     //Lekérdezés
-
     $sql1 = "SELECT * FROM felhasznalo";
     $request = $db->query($sql1);
 
