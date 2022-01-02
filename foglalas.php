@@ -37,7 +37,7 @@
 
                 //dátum és időpont tényleges ellenőrzése
                 if($result5 -> num_rows > 6){
-                    echo "<script>alert('Az Ön által megadott időpontra már nem lehetséges foglalás! Kérjük adjon meg egy másik időpontot!')</script>";
+                    echo "<script>alert('Az Ön által megadott időpontra már nem lehetséges foglalás!        Kérjük adjon meg egy másik időpontot!')</script>";
                     echo "<script>location.href='foglalas.php'</script>";
                 }
 
