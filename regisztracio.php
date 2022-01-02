@@ -29,9 +29,7 @@
                 $result3 = $db->query($sql3);
 
                 //Ellenőrzés Regex paranccsal: a jelszó tartalmaz-e kisbetűt, nagybetűt, számokat --> lentebb használjuk az 61.sorban
-                preg_match('/[0-9]+/', $pw1, $matches1);
-                preg_match('/[a-z]+/', $pw1, $matches2);
-                preg_match('/[A-Z]+/', $pw1, $matches3);  
+                preg_match('/[0-9]+, [a-z]+, [A-Z]+/', $pw1, $matches1);
 
                 //Itt megyünk végig a tényleges ellenőrzéseken
                 if($result2->num_rows > 0){
@@ -60,7 +58,7 @@
                     header("regisztracio.php");
                 }
 
-                elseif(sizeof($matches1) == 0 || sizeof($matches2) == 0 || sizeof($matches3) == 0){  //Fenntről a Regex-es ellenőrzése
+                elseif(sizeof($matches1) == 0){  //Fenntről a Regex-es ellenőrzése
                     echo "<script>alert('A jelszónak tartalmaznia kell kisbetűt, nagybetűt és számot!')</script>";
                     header("regisztracio.php");
                 }
