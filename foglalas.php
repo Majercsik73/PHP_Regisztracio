@@ -102,7 +102,6 @@
         <form method="POST" action= "">
             <table class="ujfelhasznalo">
                 <tr class="hidden">
-                    <!--<td><input type="text" name="nev2" value="<?php echo $nev ?>"></td>-->
                     <td><input type="text" name="azon2" value="<?php echo $_SESSION['Azonosito'] ?>" ></td>
                 </tr>
                 <tr>
@@ -143,6 +142,11 @@
                 <tr>
                     <td><button type="submit">Foglalás!</button></td>
                 </tr>
+            </table>
+        </form>
+        <form action="foglalasaim.php">
+            <table class="ujfelhasznalo">
+                <button type="submit">Előző foglalásaim</button>
             </table>
         </form>
         <form action="index.php">
