@@ -50,7 +50,7 @@
         </form>
         <br />
         <form action="foglalasoklekerdezese.php">
-            <button type="submit">Foglalások</button>
+            <button type="submit">Összes eddigi foglalás</button>
         </form>
     </body>
 </html>

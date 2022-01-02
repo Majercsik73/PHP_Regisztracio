@@ -144,11 +144,13 @@
                 </tr>
             </table>
         </form>
+        <br />
         <form action="foglalasaim.php">
             <table class="ujfelhasznalo">
-                <button type="submit">Előző foglalásaim</button>
+                <tr><td><button type="submit">Előző foglalásaim</button></td></tr>
             </table>
         </form>
+        <br />
         <form action="index.php">
             <button type="submit">Főoldal</button>
         </form>
