@@ -148,7 +148,7 @@
                 </tr>
                 <tr>
                     <td>Jelszó:</td>
-                    <td><input type="password" name="pw1" style="width: 240px;"placeholder="minimum 8 karakter, betűk és számok"></td>
+                    <td><input type="password" name="pw1" style="width: 240px;"placeholder="min. 6 karakter; kibetű, nagybetű, szám"></td>
                 </tr>
                 <tr>
                     <td>Jelszó újra:</td>
