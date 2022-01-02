@@ -57,8 +57,6 @@
     $sql = "SELECT * FROM foglalas ORDER BY fazon DESC limit 6";
     $request = $db->query($sql);
     
-
-
 ?>
 
 <!DOCTYPE html>
@@ -69,8 +67,10 @@
         <title>Burgeretterem-Foglalás</title>
     </head>
     <body>
-        <h1> Üdvözöljük <?php echo " ".$_SESSION['Felhasznalonev']."  ".$_SESSION['Azonosito'] ?> !</h1>
-        <h2> Foglalásához kérjük adja meg a személyek számát, a dátumot és az időpontot!</h2>
+        <div class="udv">
+            <h1> Üdvözöljük <?php echo " ".$_SESSION['Felhasznalonev']//."  ".$_SESSION['Azonosito'] ?> !</h1>
+            <h2> Foglalásához kérjük adja meg a személyek számát, a dátumot és az időpontot!</h2>
+        </div>
         <br />
         <table>
             <thead style="font-weight:bold">
