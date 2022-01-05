@@ -2,13 +2,13 @@
     include("dbconnect.php");
     session_start();
 
-    echo "Az alábbi adatokkal vagy itt: <br />";
+    /*echo "Az alábbi adatokkal vagy itt: <br />";
     echo "<pre>";
     print_r($_SESSION);
-    echo "</pre>";
+    echo "</pre>";*/
     //Lekérdezés
     $azon = $_SESSION['Azonosito'];
-    echo $azon;
+    //echo $azon;
     $sql = "SELECT * FROM foglalas WHERE azon = '$azon' ORDER BY ido DESC";
     $request = $db->query($sql);
 
@@ -22,8 +22,10 @@
         <title>Burger-Foglalásaim Listája</title>
     </head>
     <body>
-        <h2>Kedves <?php echo $_SESSION['Felhasznalonev']?> !</h2>
-        <h3>Éttermünkben az alábbi foglalásaid voltak korábban:</h3>
+        <div class="udv">
+            <h2>Kedves <?php echo $_SESSION['Felhasznalonev']?> !</h2>
+            <h3>Éttermünkben az alábbi foglalásaid voltak korábban:</h3>
+        </div>
         <br />
         <table>
             <thead style="font-weight:bold">
