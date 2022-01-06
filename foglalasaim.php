@@ -51,7 +51,7 @@
         </table>
         <br />
         <form action="foglalas.php">
-            <tr class="ujfelhasznalo"><td><button type="submit">Vissza a foglaláshoz</button></td></tr>
+            <table class="ujfelhasznalo"><tr><td><button type="submit">Vissza a foglaláshoz</button></td></tr></table>
         </form>
         
     </body>

@@ -140,7 +140,7 @@
                     <td><input type="time" name="idopont"></td>
                 </tr>-->
                 <tr>
-                    <td><button type="submit">Foglalás!</button></td>
+                    <td><button type="submit">Foglalom!</button></td>
                 </tr>
             </table>
         </form>
