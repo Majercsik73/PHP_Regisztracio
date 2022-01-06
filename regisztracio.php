@@ -39,7 +39,7 @@
                     header("regisztracio.php");
 
                 }
-                
+                //elseif
                 elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     echo "<script>alert('A megadott email-cím nem helyes!')</script>";
                     header("regisztracio.php");
@@ -89,6 +89,41 @@
     
 ?>
 
+<script>
+    function formEllenorzes() {
+        let a = document.forms["regist"]["nev"].value;
+        if (a == "" || a == null) {
+            alert("Név megadása kötelező!");
+            return false;
+        }
+        let b = document.forms["regist"]["lak"].value;
+        if (b == "" || b == null) {
+            alert("Lakcím megadása kötelező!");
+            return false;
+        }
+        let c = document.forms["regist"]["tel"].value;
+        if (c == "" || c == null) {
+            alert("Telefonszám megadása kötelező!");
+            return false;
+        }
+        let d = document.forms["regist"]["email"].value;
+        if (d == "" || d == null) {
+            alert("Email cím megadása kötelező!");
+            return false;
+        }
+        let e = document.forms["regist"]["pw1"].value;
+        if (e == "" || e == null) {
+            alert("Az első jelszómező nincs kitöltve");
+            return false;
+        }
+        let f = document.forms["regist"]["pw2"].value;
+        if (f == "" || f == null) {
+            alert("A második jelszómező nincs kitöltve");
+            return false;
+        }
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="hu">
     <head>
@@ -123,7 +158,7 @@
             ?>
         </table>    
         <br />
-        <form method = "POST" action="">
+        <form name="regist" method = "POST" action="" onsubmit="return formEllenorzes()">
             <table class = "ujfelhasznalo">
                 <tr><td><strong>Regisztráció:</strong></td></tr>
                 <!--<tr class="hidden">
@@ -132,27 +167,27 @@
                 </tr>-->
                 <tr>
                     <td>Név:</td>
-                    <td><input type="text" name="nev" style="width: 240px;" placeholder="teljes név"></td>
+                    <td><input type="text" name="nev" id="nev" style="width: 240px;" placeholder="teljes név"></td>
                 </tr>
                 <tr>
                     <td>Lakhely:</td>
-                    <td><input type="text" name="lak" style="width: 240px;" placeholder="teljes lakcím"></td>
+                    <td><input type="text" name="lak" id="lak" style="width: 240px;" placeholder="teljes lakcím"></td>
                 </tr>
                 <tr>
                     <td>Telefonszám:</td>
-                    <td><input type="text" name="tel" style="width: 240px;" placeholder="pl.:+36801111111"></td>
+                    <td><input type="text" name="tel" id="tel" style="width: 240px;" placeholder="pl.:+36801111111"></td>
                 </tr>
                 <tr>
                     <td>E-mail cím:</td>
-                    <td><input type="text" name="email" style="width: 240px;" placeholder="valami@valami.com"></td>
+                    <td><input type="text" name="email" id="email" style="width: 240px;" placeholder="valami@valami.com"></td>
                 </tr>
                 <tr>
                     <td>Jelszó:</td>
-                    <td><input type="password" name="pw1" style="width: 240px;"placeholder="min. 6 karakter; kibetű, nagybetű, szám"></td>
+                    <td><input type="password" name="pw1" id="pw1" style="width: 240px;"placeholder="min. 6 karakter; kibetű, nagybetű, szám"></td>
                 </tr>
                 <tr>
                     <td>Jelszó újra:</td>
-                    <td><input type="password" name="pw2" style="width: 240px;" placeholder="jelszó megerősítése"></td>
+                    <td><input type="password" name="pw2" id="pw2" style="width: 240px;" placeholder="jelszó megerősítése"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Regisztrálok"></td>
