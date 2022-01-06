@@ -44,9 +44,10 @@
             ?>
         </table>
         <br />
-        <form action="index.php">
-            <button type="submit">Főoldal</button>
-        </form>
-        
+        <div class="udv">
+            <form action="index.php">
+                <button type="submit">Főoldal</button>
+            </form>
+        </div>
     </body>
 </html>

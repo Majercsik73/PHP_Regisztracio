@@ -41,16 +41,18 @@
             ?>
         </table>    
         <br />
-        <form action="regisztracio.php">
-            <button type="submit">Regisztráció</button>
-        </form>
-        <br />
-        <form action="belepes.php">
-            <button type="submit">Belépés</button>
-        </form>
-        <br />
-        <form action="foglalasoklekerdezese.php">
-            <button type="submit">Összes eddigi foglalás</button>
-        </form>
+        <div class="udv">
+            <form action="regisztracio.php">
+                <button type="submit">Regisztráció</button>
+            </form>
+            <br />
+            <form action="belepes.php">
+                <button type="submit">Belépés</button>
+            </form>
+            <br />
+            <form action="foglalasoklekerdezese.php">
+                <button type="submit">Összes eddigi foglalás</button>
+            </form>
+        </div>
     </body>
 </html>
